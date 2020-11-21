@@ -13,14 +13,14 @@
 <body>
     <div class='container'>
             <h1> cadastrar </h1>    
-        <form action="/" method="post">   
+        <form action="/save" method="post">   
             
 
             <input name="id" value=`${data.id}` type="hidden">  
             <div class="col">
                 <label for="nome">nome: </label>
                 <div class="input-group-prepend">
-                    <input value='${data.nome}' name="nome" placeholder="coloque seu nome">
+                    <input value='${data.nome}' name="nome" placeholder="coloque seu nome" required>
                 </div> 
                
             </div> 
@@ -30,13 +30,22 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend2">@</span>
                     </div>
-                        <input class="input-group-text" value='${data.email}' name="email" placeholder="coloque seu email">
+                        <input class="input-group-text" value='${data.email}' name="email" placeholder="coloque seu email" required>
+
                 </div> 
             </div>    
+
+                <div class="col">
+                        <label  for="senha" class="">senha: </label> 
+                    <div class="input-group-prepend">
+                        <input type="password" name="senha" value="" placeholder="coloque sua senha" required>
+                    </div>
+                
+                </div>
             <div class="col">
-                    <label  for="numero" class="">Numero: </label> 
+                    <label  for="numero" class="">Numero-celular: </label> 
                 <div class="input-group-prepend">
-                     <input type="text" name="numero" value="" placeholder="coloque seu numero">
+                     <input type="text" name="numero" value="" placeholder="coloque seu numero" required>
                 </div>
                 
             </div>
@@ -44,35 +53,35 @@
             
 
             <div class="col">
-                <label  for="endereco" class="">Endereço: </label> 
+                
            
             
             </div>
-
+            <label  for="endereco" class="">Endereço: </label> 
             <div class="from-group">
                 <label for="cep">CEP</label>
-                <input class="form-control" type="text" id="cep" maxlength="9">
+                <input name="cep" class="form-control" type="text" id="cep" maxlength="9" required>
                 <small>00000-000</small>
             </div>
             <div class="from-group">
                 <label for="logradoro">logradoro</label>
-                <input class="form-control" type="text" id="logradoro">
+                <input name="logradouro" class="form-control" type="text" id="logradoro" >
                 <small>logradouro</small>
             </div>
             <div class="from-group">
                 <label for="bairro">bairro</label>
-                <input class="form-control" type="text" id="bairro">
+                <input name="bairro" class="form-control" type="text" id="bairro" required>
                 <small></small>
             </div>
             <div class="from-group">
                 <label for="localidade">localidade</label>
-                <input class="form-control" type="text" id="localidade">
+                <input name="localidade" class="form-control" type="text" id="localidade">
                 <small>localidade</small>
             </div>
             <div class="from-group">
                 <label for="uf">UF</label>
-                <select class="" name="uf">
-                    <option value=""></option>
+                <select class="" name="uf" required>
+                    <option value='${data.nome}'></option>
                 </select>
                <!--<input class="form-control" type="text" id="uf">--> 
                 <small>estado</small>
@@ -90,7 +99,7 @@
 
 
         <script>
-            const cep = document.querySelector("#cep");
+           /* const cep = document.querySelector("#cep");
 
             cep.addEventListener('blur',(e)=>{
                 console.log(e)
@@ -107,7 +116,7 @@
                 })
                 .catch(e => console.log('algo errado' , e))
             })
-
+*/
 
             function estados(){
 

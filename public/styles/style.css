@@ -4,6 +4,18 @@
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
 }
+/* login   ---------*/
+div.login{
+  margin-left: 30%;
+  margin-top:100px;
+}
+
+
+
+/* final login --------------*/
+a{
+  text-decoration: none;
+}
 
 body {
   background-color: #0b0b0b;

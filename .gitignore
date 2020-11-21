@@ -1,7 +1,12 @@
 node_modules
+<<<<<<< HEAD
 package-lock.json
 package.json
 
+=======
+package.json
+package-lock.json
+>>>>>>> back-end
 # Logs
 logs
 *.log
