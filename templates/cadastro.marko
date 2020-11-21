@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class='container'>
+            <h1> cadastrar </h1>    
+        <form action="/" method="post">   
+            
+
+            <input name="id" value=`${data.id}` type="hidden">  
+            <div class="col">
+                <label for="nome">nome: </label>
+                <div class="input-group-prepend">
+                    <input value='${data.nome}' name="nome" placeholder="coloque seu nome">
+                </div> 
+               
+            </div> 
+            <div class="col">
+                <label  for="email">email: </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    </div>
+                        <input class="input-group-text" value='${data.email}' name="email" placeholder="coloque seu email">
+                </div> 
+            </div>    
+            <div class="col">
+                    <label  for="numero" class="">Numero: </label> 
+                <div class="input-group-prepend">
+                     <input type="text" name="numero" value="" placeholder="coloque seu numero">
+                </div>
+                
+            </div>
+
+            
+
+            <div class="col">
+                <label  for="endereco" class="">Endereço: </label> 
+           
+            
+            </div>
+
+            <div class="from-group">
+                <label for="cep">CEP</label>
+                <input class="form-control" type="text" id="cep" maxlength="9">
+                <small>00000-000</small>
+            </div>
+            <div class="from-group">
+                <label for="logradoro">logradoro</label>
+                <input class="form-control" type="text" id="logradoro">
+                <small>logradouro</small>
+            </div>
+            <div class="from-group">
+                <label for="bairro">bairro</label>
+                <input class="form-control" type="text" id="bairro">
+                <small></small>
+            </div>
+            <div class="from-group">
+                <label for="localidade">localidade</label>
+                <input class="form-control" type="text" id="localidade">
+                <small>localidade</small>
+            </div>
+            <div class="from-group">
+                <label for="uf">UF</label>
+                <select class="" name="uf">
+                    <option value=""></option>
+                </select>
+               <!--<input class="form-control" type="text" id="uf">--> 
+                <small>estado</small>
+            </div>
+
+
+            <button class="btn btn-dark">inserir</button> 
+             <a class="btn btn-danger" href="/">cancelar</a>
+
+           
+        </form>
+       
+        </div>
+
+
+
+        <script>
+            const cep = document.querySelector("#cep");
+
+            cep.addEventListener('blur',(e)=>{
+                console.log(e)
+                let search = cep.value.replace('-', '');
+                const options ={
+                    method: 'GET',
+                    mode:'cors',
+                    cache:'default'
+                }
+            
+                fetch(`viacep.com.br/ws/${search}/json/`, options)
+                .then( res=>{  return res.json().then( data =>{ console.log(data)})
+                    
+                })
+                .catch(e => console.log('algo errado' , e))
+            })
+
+
+            function estados(){
+
+                const ufSelect = document.querySelector('select[name=uf]')
+
+                fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+                .then((res)=>{
+                    return res.json()
+                }).then((data)=>{
+                    for(const state of data){
+                        ufSelect.innerHTML += `<option value='${state.id}'>${state.nome}<option>`
+                    }
+                })
+
+
+                }
+             
+            estados() 
+              
+    
+</script>
+
+</body>
+</html>
