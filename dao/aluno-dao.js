@@ -2,12 +2,12 @@ const mysql = require('mysql2')
 
 class AlunoDao {
     constructor() {
-        this._connection = mysql.createConnection({
+       /* this._connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
             password: '85850219',
             database: 'crud_node'
-        })
+        })*/
     }
 
     list() {
