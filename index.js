@@ -41,6 +41,18 @@ app.get('/cadastro', (req,res) => {
     res.marko(require('./templates/cadastro.marko'))
 })
 
+app.get('/feminino', (req,res) => {
+    res.marko(require('./templates/feminino.marko'))
+})
+
+app.get('/masculino', (req,res) => {
+    res.marko(require('./templates/masculino.marko'))
+})
+
+app.get('/infantil', (req,res) => {
+    res.marko(require('./templates/infantil.marko'))
+})
+
 app.listen(port, '0.0.0.0',() => {
     console.log(`Servidor iniciado na porta ${port}`)
 })
