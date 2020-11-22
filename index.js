@@ -65,6 +65,7 @@ app.post('/into' , (req,res)=>{
 app.get('/cadastro', (req,res) => {
     res.marko(require('./templates/cadastro.marko'))
 })
+
 app.post('/save' , (req,res)=>{
     console.log(req.body);
    dao.save(req.body).then((results)=>{

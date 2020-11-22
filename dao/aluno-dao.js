@@ -5,7 +5,7 @@ class AlunoDao {
         this._connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '85322487-+Jj',
+            password: '85850219',
             database: 'crud_node'
         })
     }
