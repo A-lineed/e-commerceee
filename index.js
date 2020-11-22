@@ -48,9 +48,15 @@ app.get('/login' ,(req,res)=>{
     res.marko(require('./templates/login.marko'), response)
 })
 app.post('/into' , (req,res)=>{
+    console.log(req.body)
     dao.into(req.body).then(results=>{
-       
-        if(results[0].email == req.body.email && results[0].senha == req.body.senha){
+        console.log(results[0]);
+
+        if(!results[0]){
+            req.flash('error', 'usuario não existe');
+           
+            res.redirect('/login');
+        }else if(results[0].email == req.body.email && results[0].senha == req.body.senha){
             req.flash('success' , 'conectado com sucesso')
             nomeusu["nome"]=results[0].nome;
             res.redirect('/')

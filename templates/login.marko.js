@@ -24,11 +24,11 @@ function render(input, out, __component, component, state) {
     "</div></div>");
 
   marko_forOf(data.error_messages, function(message, index) {
-    out.w("<script> \r\n                    \r\n                    $(document).ready(function(){\r\n                        $('.toast').toast('show',)\r\n                    })\r\n                    console.log(message)\r\n                    </script>");
+    out.w("<script> \n                    \n                    $(document).ready(function(){\n                        $('.toast').toast('show',)\n                    })\n                    console.log(message)\n                    </script>");
   });
 
   marko_forOf(data.success_messages, function(message, index) {
-    out.w("<script> \r\n            \r\n            $(document).ready(function(){\r\n                $('.toast').toast('show')\r\n            })\r\n        \r\n        </script>");
+    out.w("<script> \n            \n            $(document).ready(function(){\n                $('.toast').toast('show')\n            })\n        \n        </script>");
   });
 
   out.w("</div>");

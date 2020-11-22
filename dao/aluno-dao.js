@@ -5,15 +5,15 @@ class AlunoDao {
         this._connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '85850219',
+            password: '85322487-+Jj',
             database: 'crud_node'
         })
     }
 
-    into() {
+    into(usu) {
         return new Promise((resolve, reject) => {
             this._connection.query(
-                'SELECT email,senha,nome FROM usuario',
+                `SELECT email,senha,nome FROM usuario where email=? AND senha=?`,[usu.email, usu.senha],
                 function(err, results) {
                     if(err) {
                         reject(err)
