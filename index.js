@@ -35,8 +35,21 @@ let nomeusu = Array();
 nomeusu["nome"] = "";
 // rota principal, listagem dos alunos
 app.get('/', (req, res) => {
- 
-    res.marko(require('./templates/home.marko'), nomeusu)
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaProduto().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/home.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/home.marko`), response, err)
+    })
     
 })
 app.get('/login' ,(req,res)=>{
@@ -86,15 +99,57 @@ app.post('/save' , (req,res)=>{
 })
 
 app.get('/feminino', (req,res) => {
-    res.marko(require('./templates/feminino.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaFeminino().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/feminino.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/feminino.marko`), response, err)
+    })
 })
 
 app.get('/masculino', (req,res) => {
-    res.marko(require('./templates/masculino.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaMasculino().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/masculino.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/masculino.marko`), response, err)
+    })
 })
 
 app.get('/infantil', (req,res) => {
-    res.marko(require('./templates/infantil.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaInfantil().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/infantil.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/infantil.marko`), response, err)
+    })
 })
 
 app.listen(port, '0.0.0.0',() => {

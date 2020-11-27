@@ -5,8 +5,68 @@ class AlunoDao {
         this._connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '85322487-+Jj',
-            database: 'crud_node'
+            password: 'root', // 85322487-+Jj
+            database: 'ecommerce' // crud_node
+        })
+    }
+
+    listaProduto() {
+        return new Promise((resolve, reject) => {
+            this._connection.query(
+                'SELECT * FROM produtos',
+                function(err, results) {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(results)
+                    }
+                }
+            )
+        })
+    }
+
+    listaFeminino() {
+        return new Promise((resolve, reject) => {
+            this._connection.query(
+                `SELECT * FROM produtos WHERE categoria = 'feminino';`,
+                function(err, results) {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(results)
+                    }
+                }
+            )
+        })
+    }
+
+    listaMasculino() {
+        return new Promise((resolve, reject) => {
+            this._connection.query(
+                `SELECT * FROM produtos WHERE categoria = 'masculino';`,
+                function(err, results) {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(results)
+                    }
+                }
+            )
+        })
+    }
+
+    listaInfantil() {
+        return new Promise((resolve, reject) => {
+            this._connection.query(
+                `SELECT * FROM produtos WHERE categoria = 'infantil';`,
+                function(err, results) {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(results)
+                    }
+                }
+            )
         })
     }
 
@@ -28,7 +88,7 @@ class AlunoDao {
     save(usuario) {
         return new Promise((resolve, reject) => {
             this._connection.query(
-                'INSERT INTO usuario (nome, email, senha, numero, cep, logradouro, bairro, localidade, uf ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+                'INSERT INTO usuarios (nome, email, senha, numero, cep, logradouro, bairro, localidade, uf ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
                 [usuario.nome, usuario.email, usuario. senha, usuario.numero,usuario.cep, usuario.logradouro, usuario.bairro, usuario.localidade, usuario.uf],
                 function(err, results) {
                     if(err) {
