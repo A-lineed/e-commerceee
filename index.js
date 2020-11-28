@@ -33,9 +33,9 @@ app.use(flash())
 
 let nomeusu = Array();
 nomeusu["nome"] = "";
-// rota principal, listagem dos alunos
+// rota principal
 app.get('/', (req, res) => {
- 
+    console.log(nomeusu["nome"])
     res.marko(require('./templates/home.marko'), nomeusu)
     
 })
