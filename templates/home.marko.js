@@ -16,7 +16,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><title>UseVibe - Início</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css><link rel=stylesheet href=styles/style.css></head><body><nav><div class=mini><p class=products>Empty</p><p class=names></p><p class=miniprice></p></div><ul><li><a href=/ >Home</a></li><li><a href=/login>Login</a></li><li><a href=/cadastro>Cadastro</a></li><li><a href=/feminino>Feminino</a></li><li><a href=/masculino>Masculino</a></li><li><a href=/infantil>Infantil</a></li><li>Contato</li></ul><span style=margin-left:150px;>bem vindo - " +
+  out.w("<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><title>UseVibe - Início</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css><link rel=stylesheet href=styles/style.css></head><body><nav><div class=mini><p class=products>Empty</p><p class=names></p><p class=miniprice></p></div><ul><li><a href=/ >Home</a></li><li><a href=/login>Login</a></li><li><a href=/cadastro>Cadastro</a></li><li><a href=/feminino>Feminino</a></li><li><a href=/masculino>Masculino</a></li><li><a href=/infantil>Infantil</a></li></ul><span style=margin-left:150px;>bem vindo - " +
     marko_escapeXml(data.nome) +
     "</span><div class=\"cart icon-basket\"><span class=number>1</span></div></nav><div class=container>");
 
@@ -38,7 +38,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "44");
+  await_reorderer_tag({}, out, __component, "43");
 
   _preferred_script_location_tag({}, out);
 
