@@ -15,7 +15,7 @@ const bodyParser = require('body-parser')
 const cadastro = require('./dao/aluno-dao')
 const dao = new cadastro()
 
-
+console.log("ola")
 
 // configuração do bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -32,11 +32,27 @@ app.use(session({
 app.use(flash()) 
 
 let nomeusu = Array();
-nomeusu["nome"] = "";
+nomeusu["nomeusu"] = "";
+
 // rota principal
 app.get('/', (req, res) => {
-    console.log(nomeusu["nome"])
-    res.marko(require('./templates/home.marko'), nomeusu)
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        nomeusu: nomeusu["nomeusu"],
+        results: []
+    }
+
+    dao.listaProduto().then((results) => {
+        response.results = results;
+        console.log(response);
+        res.marko(require(`./templates/home.marko`),response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/home.marko`), response, err)
+    })
     
 })
 app.get('/login' ,(req,res)=>{
@@ -58,7 +74,7 @@ app.post('/into' , (req,res)=>{
             res.redirect('/login');
         }else if(results[0].email == req.body.email && results[0].senha == req.body.senha){
             req.flash('success' , 'conectado com sucesso')
-            nomeusu["nome"]=results[0].nome;
+            nomeusu["nomeusu"]=results[0].nome;
             res.redirect('/')
         }else{
             req.flash('error', 'usuario não existe');
@@ -84,17 +100,62 @@ app.post('/save' , (req,res)=>{
     })
   
 })
+app.post('/comprar', (req,res)=>{
+    res.send({success: true});
+})
 
 app.get('/feminino', (req,res) => {
-    res.marko(require('./templates/feminino.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaFeminino().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/feminino.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/feminino.marko`), response, err)
+    })
 })
 
 app.get('/masculino', (req,res) => {
-    res.marko(require('./templates/masculino.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaMasculino().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/masculino.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/masculino.marko`), response, err)
+    })
 })
 
 app.get('/infantil', (req,res) => {
-    res.marko(require('./templates/infantil.marko'))
+    let response = {
+        error_messages: req.flash('error'),
+        sucess_message: req.flash('success'),
+        display: 'block',
+        results: []
+    }
+
+    dao.listaInfantil().then((results) => {
+        response.results = results;
+        res.marko(require(`./templates/infantil.marko`), response)
+    }).catch((err) => {
+        console.log(err)
+        response.error_messages.push('Ocorreu algum erro no servidor')
+        res.marko(require(`./templates/infantil.marko`), response, err)
+    })
 })
 
 app.listen(port, '0.0.0.0',() => {
