@@ -7,7 +7,7 @@ var cartCount = 0,
 	 close = $('.quickviewContainer .close'),
 	 minicart = [],
 	 totalPrice = [],
-	 id = [],
+	 idp = [],
 	 miniCartPrice;
 
 buy.on('click', addToCart);
@@ -21,6 +21,7 @@ function quickView() {
 	var description = $(this).parent().find('.description').text(),
 		 header = $(this).parent().find('.header').text(),
 		 price = $(this).find('.price'),
+		 id = $(this).find('.id'),
 		 quickViewHeader = $('.quickviewContainer .headline'),
 		 quickViewDescription = $('.quickviewContainer .description');
 	clearTimeout(timeQuick);
@@ -49,10 +50,11 @@ function addToCart() {
 		 id = $(this).parent().find('.id').text(),
 		 price = $(this).parent().find('.price').text(),
 		 priceInt = parseInt(price);
+		 
 	
 	totalPrice.push(priceInt);
 	miniCartPrice = totalPrice.reduce(function(a,b){  return a+b });
-	$('.miniprice').text('Total amount: R$' + miniCartPrice + "");
+	$('.miniprice').text('Total amount: R$' + miniCartPrice + " ");
 	minicart.push(productName);
 	lastProduct = minicart[minicart.length - 1];
 	miniCartNames.text('Your cart lines: ');

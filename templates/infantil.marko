@@ -23,11 +23,10 @@
     <li><a href="/feminino">Feminino</a></li>
     <li><a href="/masculino">Masculino</a></li>
     <li><a href="/infantil">Infantil</a></li>
-    <li>Contato</li>
   </ul>
 
   <span style="margin-left:150px;">
-    bem vindo - ${data.nome}
+    bem vindo(a) - ${data.nomeusu}
   </span>
   <div class='cart icon-basket'>
     <span class='number'>1</span>
@@ -41,8 +40,12 @@
       <p class="price">
         ${produto.preco}
       </p>
-      <div class='btn'>Carrinho</div>
-      <div class='quickview'>Add carrinho</div>
+      <div class='btn'>Add carrinho</div>
+      <form action=`/comprar` method="post">
+        <input type="hidden" name="id" value=`${produto.id}`>
+        <input type="hidden" name="nome" value=`${produto.nome}`>
+        <input style= "text-align:center; border-radius: 10px;margin: 10px 90px 70px 0px;width:80px; height:40px; background-color:black; color:white;" class="btn-outline-primary" type="submit" value="comprar" >
+      </form>
     </div>
   </for>
 </div>
