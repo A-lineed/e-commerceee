@@ -6,7 +6,7 @@ var markoExpress = require("marko/express")
 const app = express()
 app.use(markoExpress())
 
-//ultilizando aqruivos esaticos
+//ultilizando aqruivos estaticos
 app.use(express.static('public'));
 app.use(express.static('files'));
 //objeto do banco de dados
@@ -21,7 +21,7 @@ paypal.configure(paypalconfig);
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// configuração do connect-flash e sesseion
+// configuração do connect-flash e session
 const {responde, response} = require('express')
 const session = require('express-session');
 const flash = require('connect-flash')

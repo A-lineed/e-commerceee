@@ -25,40 +25,40 @@
 </head>
 <body>
   <div class='container'>
-            <h1> cadastrar </h1>    
+            <h1> Cadastre-se </h1>    
         <form action="/save" method="post">   
             
 
             <input name="id" value=`${data.id}` type="hidden">  
             <div class="col">
-                <label for="nome">nome: </label>
+                <label for="nome">Nome: </label>
                 <div class="input-group-prepend">
-                    <input  value='${data.nome}' class="form-control cad" name="nome" placeholder="nome" required>
+                    <input  value='${data.nome}' class="form-control cad" name="nome" placeholder="Digite seu nome" required>
                 </div> 
                
             </div> 
             <div class="col">
-                <label  for="email">email: </label>
+                <label  for="email">Email: </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span style="position:absolute; right:61%;" class="input-group-text " id="inputGroupPrepend2">@</span>
                     </div>
-                        <input  class="input-group-text cad"  value='${data.email}' name="email" placeholder="email" required>
+                        <input  class="input-group-text cad"  value='${data.email}' name="email" placeholder="Digite o email" required>
 
                 </div> 
             </div>    
 
                 <div class="col">
-                        <label  for="senha" class="">senha: </label> 
+                        <label  for="senha" class="">Senha: </label> 
                     <div class="input-group-prepend">
-                        <input  type="password" class="form-control cad" name="senha" value="" placeholder="senha" required>
+                        <input  type="password" class="form-control cad" name="senha" value="" placeholder="Digite uma senha" required>
                     </div>
                 
                 </div>
             <div class="col">
-                    <label  for="numero" class="">Numero-celular: </label> 
+                    <label  for="numero" class="">Telefone para contao: </label> 
                 <div class="input-group-prepend">
-                     <input  type="text" name="numero" class="form-control cad" value="" placeholder="telefone" required>
+                     <input  type="text" name="numero" class="form-control cad" value="" placeholder="Digite seu telefone" required>
                 </div>
                 
             </div>
@@ -77,18 +77,18 @@
                 <small>00000-000</small>
             </div>
             <div class="from-group">
-                <label for="logradoro">logradoro</label>
-                <input name="logradouro" class="form-control cad1" type="text" id="logradoro" >
+                <label for="logradoro">Logradouro</label>
+                <input name="logradouro" class="form-control cad1" type="text" id="Logradouro" >
                 <small></small>
             </div>
             <div class="from-group">
-                <label for="bairro">bairro</label>
-                <input name="bairro" class="form-control cad1" type="text" id="bairro" required>
+                <label for="bairro">Bairro</label>
+                <input name="bairro" class="form-control cad1" type="text" id="Bairro" required>
                 <small></small>
             </div>
             <div class="from-group">
-                <label for="cidade">cidade</label>
-                <input name="localidade" class="form-control cad1" type="text" id="localidade">
+                <label for="cidade">Cidade</label>
+                <input name="localidade" class="form-control cad1" type="text" id="Localidade">
                 
             </div>
             <div class="from-group">
@@ -101,9 +101,9 @@
             </div>
 
 
-            <button type="submit" class="btn btn-light">inserir</button>
+            <button type="submit" class="btn btn-light">Inserir</button>
 
-             <a class="btn btn-danger" href="/">cancelar</a>
+             <a class="btn btn-danger" href="/">Cancelar</a>
 
            
         </form>
